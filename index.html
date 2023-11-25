@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <style>
+      @font-face {
+        font-family: "KdamThmorPro";
+        src: url("fonts/KdamThmorPro-Regular.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      body {
+        background: linear-gradient(to bottom, #001f3f, #050505);
+        color: #eee;
+        font-family: "KdamThmorPro", sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+
+      .alwaysHideCursor {
+        cursor: none;
+      }
+
+      .container {
+        margin-top: 50px;
+        margin-bottom: 120px;
+        position: relative;
+        z-index: 1;
+        overflow: auto;
+      }
+
+      .box {
+        text-align: center;
+        padding: 30px 50px;
+        border: 2px solid #ffa500;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      h1,
+      h2,
+      p,
+      .card-title,
+      .card-body,
+      .btn,
+      .alert {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      ul {
+        list-style-type: none;
+      }
+      h1 {
+        font-size: 4em;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 2.5em; /* Increased font size */
+        position: relative;
+        display: inline-block;
+      }
+
+      h2::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, transparent 50%, #ffa500 50%);
+        position: absolute;
+        top: 50%;
+        z-index: -1;
+      }
+
+      p {
+        font-size: 1.6em;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo {
+        max-width: 200px;
+        max-height: 200px;
+        margin: 10px;
+      }
+
+      .subheading {
+        text-align: center;
+        margin-top: 22px;
+        color: #ffa500;
+        font-size: 1.5em;
+      }
+
+      .card {
+        margin-top: 30px;
+        background-color: #2c2c2c;
+        border: 2px solid #ffa500;
+        color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-title {
+        color: #ffa500;
+        font-size: 2em;
+        margin-bottom: 10px;
+      }
+
+      .card-body {
+        padding: 24px;
+      }
+
+      .rsvp-btn {
+        margin-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.8em;
+        padding: 15px 30px;
+        border: 2px solid #ffa500;
+        border-radius: 50px; /* Make it round */
+        color: #ffa500;
+        text-decoration: none;
+        cursor: none; /* Hide the actual cursor */
+        background-color: transparent;
+        position: relative;
+        z-index: 1;
+      }
+
+      .rsvp-btn:hover {
+        background-color: #ffa500;
+        color: #000;
+        cursor: none;
+      }
+
+      .rsvp-btn:active {
+        background-color: #000;
+        color: #ffa500;
+        cursor: none;
+      }
+      .ind:active{
+        cursor: none;
+      }
+      .ind:hover{
+        cursor: none;
+      }
+
+      .sponsors {
+        width: 100%;
+        padding: 30px;
+        background-color: #333;
+        border-top: 2px solid #ffa500;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-sizing: border-box;
+        position: relative;
+      }
+
+      .sponsor-logo {
+        max-width: 45%;
+        max-height: 45%;
+        margin: 2.5%;
+        border-color: rgb(226, 47, 47) 6;
+
+        border-radius: 5px;
+      }
+
+      /* Cursor follower styles */
+      .cursor {
+        width: 20px;
+        height: 20px;
+        border: 2px solid yellow;
+        background-color: #001f3f;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+      .prizeList {
+        font-size: 22px;
+        color: orange;
+        text-align: center;
+      }
+      /* Cursor shrink effect */
+      .cursor.shrink {
+        transform: translate(-50%, -50%) scale(0.5);
+      }
+
+      /* Additional Styles for FAQ and Rubric */
+      .faq-card {
+        margin-top: 30px;
+      }
+
+      .faq-question {
+        color: #ffa500;
+        font-size: 1.4em;
+        font-weight: bold;
+      }
+
+      .faq-answer {
+        color: #87ceeb;
+        font-size: 1.2em;
+      }
+
+      .rubric-card {
+        margin-top: 30px;
+      }
+      .upmostBox {
+        background-image: url("assets/school.png");
+      }
+      .rubric-title {
+        color: #87ceeb;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      .rubric-criteria {
+        color: #08b0f2;
+        font-size: 1.4em;
+      }
+
+      .prizes-section {
+        margin-top: 30px;
+        background-color: #2c2c2c;
+        border: 2px solid #ffa500;
+        color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 24px;
+      }
+    </style>
+    <title>D128 Steam - 2024 Showcase</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box upmostBox">
+        <div class="logo-container">
+          <img
+            src="https://d128steam2023.web.app/static/media/logo.a116d1b5.png"
+            alt="Event Logo"
+            class="logo"
+          />
+          <img src="assets/Logo2.png" alt="Second Logo" class="logo" />
+        </div>
+        <h1 class="mt-3">D128 Steam</h1>
+        <div class="subheading">
+          <h3>2024 Showcase</h3>
+        </div>
+        <button id="rsvpBtn" class="rsvp-btn btn">Sign-Up Now!</button>
+      </div>
+
+      <!-- Contact Section -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Contact</h5>
+              <p>Contact information goes here.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rubric Section -->
+        <div class="col-md-8">
+          <div class="card rubric-card">
+            <div class="card-body">
+              <table class="table table-hover table-dark">
+                <thead>
+                  <tr class="table-dark text-dark">
+                    <th scope="col">Points</th>
+                    <th scope="col">Criteria</th>
+                  </tr>
+                </thead>
+                <tbody class="text-primary">
+                  <tr>
+                    <th class="table-dark" scope="row">30 pts</th>
+                    <td>
+                      Problem Identification: How pertinent is your problem?
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="table-dark" scope="row">30 pts</th>
+                    <td>Solution: How feasible and logical is your project?</td>
+                  </tr>
+                  <tr>
+                    <th class="table-dark" scope="row">20 pts</th>
+                    <td>
+                      Creativity: How innovative and DARING is your project?
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="table-dark" scope="row">20 pts</th>
+                    <td>Theme: How well does your project fit the theme?</td>
+                  </tr>
+                  <tr>
+                    <th class="table-dark" scope="row">10 pts</th>
+                    <td>Presentation: How professional and engaging is it?</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- <h5 class="rubric-title">Rubric</h5>
+              <p class="rubric-criteria">
+                30pts. Problem Identification: How pertinent is your problem?
+              </p>
+              <p class="rubric-criteria">
+                30pts. Solution: How feasible and logical is your project?
+              </p>
+              <p class="rubric-criteria">
+                20pts. Creativity: How innovative and DARING is your project?
+              </p>
+              <p class="rubric-criteria">
+                20pts. Theme: How well does your project fit the theme? (TBD)
+              </p>
+              <p class="rubric-criteria">
+                10pts. Presentation: How professional and engaging is it?
+              </p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card faq-card">
+            <div class="card-body">
+              <h5 class="card-title">FAQ</h5>
+              <p class="faq-question">
+                What kinds of problems should I tackle? I'm lost!
+              </p>
+              <p class="faq-answer">
+                Try the
+                <a href="https://sdgs.un.org/goals"
+                  >UN Development Goals website</a
+                >
+                for ideas. Think big, and think impactful.
+              </p>
+
+              <p class="faq-question">
+                What is the overall division? Can I win it?
+              </p>
+              <p class="faq-answer">
+                If you sign up for 3 or more divisions, you're automatically
+                entered. Your average score across your divisions will be your
+                overall score. (And no, it's not edible.)
+              </p>
+
+              <p class="faq-question">
+                I created a project this semester for class or a club or for
+                fun, can I use that project?
+              </p>
+              <p class="faq-answer">
+                Yes, absolutely!!! That's the idea, to show off cool things
+                you've made!
+              </p>
+
+              <p class="faq-question">
+                How do I enroll in the overall division (which has the biggest
+                prizes)?
+              </p>
+              <p class="faq-answer">
+                If you apply to the 3 or more divisions (Science, Tech,
+                Engineer, etc…), you automatically get enrolled in the overall
+                division. Your average score for each division you enter is your
+                overall score. If you do not win in the overall division, you
+                can still win in the individual divisions.
+              </p>
+
+              <p class="faq-question">Q: How will prizes work?</p>
+              <p class="faq-answer">
+                Each entry will receive prizes based on its performance. If
+                you're entering as a group, it's up to your team to divvy up
+                prizes.
+              </p>
+
+              <p class="faq-question">
+                Can I win more than one division/prize?
+              </p>
+              <p class="faq-answer">
+                Unfortunately, no. You may only win one of the individual
+                divisions or win the overall (which is what you want).
+              </p>
+
+              <p class="faq-question">
+                I am a part of a team, but there is only one prize (or fewer
+                prizes than team members). Can I have more?
+              </p>
+              <p class="faq-answer">
+                No. Your team is responsible for the dividing of the prizes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prizes Section -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="prizes-section">
+            <h5 class="card-title">Prizes</h5>
+            <p>
+              Prizes will be awarded based on the overall scores and performance
+              in each division. Here's what you can win:
+            </p>
+            <ul>
+              <li class="prizeList">
+                First Place: Exciting Prize and Certificate of Achievement
+              </li>
+              <li class="prizeList">
+                Second Place: Amazing Prize and Certificate of Achievement
+              </li>
+              <li class="prizeList">
+                Third Place: Fantastic Prize and Certificate of Achievement
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="sponsorCarousel"
+      class="carousel slide mt-5 border pt-3 pb-5"
+      data-ride="carousel"
+      data-interval="4250"
+    >
+      <ol class="carousel-indicators ind">
+        <li
+          data-target="#sponsorCarousel"
+          data-slide-to="0"
+          class="active ind"
+        ></li>
+        <li class="ind" data-target="#sponsorCarousel" data-slide-to="1"></li>
+        <li class="ind" data-target="#sponsorCarousel" data-slide-to="2"></li>
+        <li class="ind" data-target="#sponsorCarousel" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <h3 class="text-center mb-4">Platinum Sponsors</h3>
+          <div class="d-flex justify-content-between mx-3 mx-auto">
+            <img
+              src="assets/Sponsor1.png"
+              class="sponsor-logo"
+              alt="Sponsor 1"
+            />
+            <img
+              src="assets/Sponsor2.png"
+              class="sponsor-logo"
+              alt="Sponsor 2"
+            />
+          </div>
+        </div>
+        <div class="carousel-item">
+          <h3 class="text-center mb-4">Gold Sponsors</h3>
+          <div class="d-flex justify-content-between mx-3 mx-auto">
+            <img
+              src="assets/Sponsor3.png"
+              class="sponsor-logo"
+              alt="Sponsor 3"
+            />
+            <img
+              src="assets/Sponsor4.png"
+              class="sponsor-logo"
+              alt="Sponsor 4"
+            />
+          </div>
+        </div>
+        <div class="carousel-item">
+          <h3 class="text-center mb-4">Silver Sponsors</h3>
+          <div class="d-flex justify-content-between mx-3 mx-auto">
+            <img
+              src="assets/Sponsor5.png"
+              class="sponsor-logo"
+              alt="Sponsor 5"
+            />
+            <img
+              src="assets/Sponsor6.png"
+              class="sponsor-logo"
+              alt="Sponsor 6"
+            />
+          </div>
+        </div>
+        <div class="carousel-item">
+          <h3 class="text-center mb-4">Bronze Sponsors</h3>
+          <div class="d-flex justify-content-between mx-3 mx-auto">
+            <img
+              src="assets/Sponsor7.png"
+              class="sponsor-logo"
+              alt="Sponsor 7"
+            />
+            <img
+              src="assets/Sponsor8.png"
+              class="sponsor-logo"
+              alt="Sponsor 8"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cursor"></div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+      const rsvpButton = document.getElementById("rsvpBtn");
+      const cursor = document.querySelector(".cursor");
+
+      rsvpButton.addEventListener("click", function () {
+        window.location.href = "http://www.google.com";
+      });
+
+      document.addEventListener("mousemove", function (e) {
+        cursor.style.left = e.pageX + "px";
+        cursor.style.top = e.pageY + "px";
+        document.body.classList.add("alwaysHideCursor");
+      });
+
+      // Cursor shrink effect
+      document.body.onmousedown = function () {
+        cursor.classList.add("shrink");
+      };
+
+      document.body.onmouseup = function () {
+        cursor.classList.remove("shrink");
+      };
+    </script>
+  </body>
+</html>
