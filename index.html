@@ -6,6 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -268,7 +269,11 @@
     </style>
     <title>D128 Steam - 2024 Showcase</title>
   </head>
+
   <body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <div class="container">
       <div class="box upmostBox">
         <div class="logo-container">
@@ -289,6 +294,68 @@
       <p>
       An opportunity for VHHS and LHS students to showcase their STEAM projects that they have worked so hard on this past semester. Students will compete in the categories: Science, Technology, Engineering, Entrepreneurship, Equity,  Arts, and Math to create solutions to real world problems.
       </p>
+
+      
+      <style>
+        /* Custom CSS for the prizes section */
+        .prizes-section .nav-link {
+            width: calc(100% / 6); /* Make each tab span the whole width */
+            text-align: center;
+            font-size: 18px; /* Increase font size */
+        }
+    
+        /* Make the 2023 tab bigger and bolder */
+        #tab-2023 {
+            font-weight: bold;
+            font-size: 20px; /* Increase font size for 2023 tab */
+        }
+    </style>
+
+    
+    <!-- Winners Card Section -->
+    <div class="card">
+      <div class="card-body">
+        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+          <!-- Tab labels from 2023 to 2018 -->
+          <li class="nav-item">
+            <a class="nav-link active" id="tab2024-tab" data-toggle="tab" href="#tab2024" role="tab" aria-controls="tab2024" aria-selected="true">2024</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab2023-tab" data-toggle="tab" href="#tab2023" role="tab" aria-controls="tab2023" aria-selected="false">2023</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab2022-tab" data-toggle="tab" href="#tab2022" role="tab" aria-controls="tab2022" aria-selected="false">2022</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" id="tab2021-tab" data-toggle="tab" href="#tab2021" role="tab" aria-controls="tab2021" aria-selected="false">2021</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab2020-tab" data-toggle="tab" href="#tab2020" role="tab" aria-controls="tab2020" aria-selected="false">2020</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab2019-tab" data-toggle="tab" href="#tab2019" role="tab" aria-controls="tab2019" aria-selected="false">2019</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab2018-tab" data-toggle="tab" href="#tab2018" role="tab" aria-controls="tab2018" aria-selected="false">2018</a>
+          </li> -->
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <!-- Tab content for each year -->
+          <div class="tab-pane fade show active" id="tab2024" role="tabpanel" aria-labelledby="tab2024"><img class="img-fluid" src="images/2024.png" alt="Placeholder Image for 2023">
+      
+          </div>
+          
+          <div class="tab-pane fade" id="tab2023" role="tabpanel" aria-labelledby="tab2023"><img class="img-fluid" src="images/2023.png" alt="Placeholder Image for 2023"></div>
+          <div class="tab-pane fade" id="tab2022" role="tabpanel" aria-labelledby="tab2022"><img class="img-fluid" src="images/2022.png" alt="Placeholder Image for 2023"></div>
+          <!-- <div class="tab-pane fade" id="tab2021" role="tabpanel" aria-labelledby="tab2021">Content for 2021</div>
+          <div class="tab-pane fade" id="tab2020" role="tabpanel" aria-labelledby="tab2020">Content for 2020</div>
+          <div class="tab-pane fade" id="tab2019" role="tabpanel" aria-labelledby="tab2019">Content for 2019</div>
+          <div class="tab-pane fade" id="tab2018" role="tabpanel" aria-labelledby="tab2018">Content for 2018</div>
+        </div> -->
+      </div>
+    </div>
+    
+    
 
       <!-- Contact Section -->
       <div class="row">
